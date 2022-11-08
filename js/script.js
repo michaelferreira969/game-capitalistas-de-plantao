@@ -1,23 +1,43 @@
 var altura = 0;
 var largura = 0;
-const vidas = ['vida1', 'vida2', 'vida3', 'vida4', 'vida5']; //Array para controle das vidas
+let acertos = 0; //Controlar quantos conseguiu acertar
+var cont = 0;
+
 var i = 0; //Variável iterável para o indice
-var tempo = 60; //Variável que define o tempo
+var tempo = 0; //Variável que define o tempo
 
-var tempoCriaMosca = 1500; //Variavel de tempo
+//Criar personagem em cada ciclo de tempo
+var criaPerson = setInterval(function() {posicaoRandom()}, 3000);
 
-var nivel = window.location.search; //Pegar nivel recebido da página
-nivel = nivel.replace('?', ''); //Substituindo caracter
-
-/*A partir da dificuldade definir tempo*/
-if(nivel === 'facil') {
-    tempoCriaMosca = 3000; //Alterar o tempo de criacao da mosca
-} else if(nivel === 'medio') {
-    tempoCriaMosca = 1500; //Alterar o tempo de criacao da mosca
-} else if(nivel === 'dificil') {
-    tempoCriaMosca = 1000; //Alterar o tempo de criacao da mosca
-} else if(nivel === 'expert') {
-    tempoCriaMosca = 750; //Alterar o tempo de criacao da mosca
+function nivel() {
+    //Definir velocidade de criação conforme a quantidade de acertos
+    if(acertos == 10) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+        
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2000);
+    }
+    else if(acertos == 15) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+        
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1500);
+    }
+    else if(acertos == 20) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+        
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1000);    }
+    else if(acertos == 25) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+        
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 500);
+    }
 }
 
 //Para que mostre o tempo logo quando começar a contar
@@ -29,95 +49,178 @@ function ajustaTamanhoCenario() {
     largura = window.innerWidth; //Definir largura da página
 }
 
-ajustaTamanhoCenario() //Sempre chamar a função
+ajustaTamanhoCenario() //chamar a função
 
 //Controlar o tempo
 var cronometro = setInterval(function() {
-    tempo -= 1; //Para reduzir o tempo conforme corre o cronometro
-     
-    if(tempo < 0) { //Se o tempo acabou
-        clearInterval(cronometro) //Interromper o tempo
-        clearInterval(criaMosca) //Interromper a criação
-        window.location.href = 'vitoria.html';
-    } else {
-        document.getElementById('cronometro').innerHTML = tempo; //Colocar o cronometro entre às tags
+    tempo += 1; //Para somar o tempo conforme corre o cronometro
+
+    //Para alterar a velocidade conforme avança o tempo
+    if(tempo == 10) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 20) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 30) {
+        //Interromper a criação
+        clearInterval(criaPerson);   
+    }
+    else if(tempo == 40) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 50) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 60) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 70) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 80) {
+        //Interromper a criação
+        clearInterval(criaPerson);
+    }
+    else if(tempo == 90) {
+        //Interromper a criação
+        clearInterval(criaPerson);
     }
 
-}, 1000); // a cada 1 segundo, ou 1000 milisegundos
+    //Criar person em determinado tempo
+    if(tempo == 12) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2500);
+    }
+    else if(tempo == 22) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2300);
+    }
+    else if(tempo == 32) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2000);
+    }
+    else if(tempo == 42) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1700);
+    }
+    else if(tempo == 52) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1500);
+    }
+    else if(tempo == 62) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1300);
+    }
+    else if(tempo == 72) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1000);
+    }
+    else if(tempo == 82) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 700);
+    }
+    else if(tempo == 92) {
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 500);
+    }
+
+    document.getElementById('cronometro').innerHTML = tempo; //Colocar o cronometro entre às tags
+
+}, 1000); // a cada 1 segundo (1000 milisegundos)
 
 
 //Criar posições randômicas
 function posicaoRandom() {
 
-    //Para que não apareça mais de uma mosca simultaneamente 
-    if (document.getElementById('mosca')) { //Se encontrar uma mosca é verdadeiro
-        document.getElementById('mosca').remove(); //Remover a mosca 
+    //Para que não apareça mais de um personagem simultaneamente 
+    if (document.getElementById('person')) { //Se encontrar um personagem é verdadeiro
+        document.getElementById('person').remove(); //Remover o personagem 
 
-        if(i >= 4) { //Se às vidas acabarem interromper
-            window.location.href = 'fim_de_jogo.html' //Ir para a página de fim de jogo
-        } else { //Caso não, continuar
-            //Remover o coração pois a mosca foi removida automaticamente
-            document.getElementById(vidas[i]).src = 'img/coracao_vazio.png';
-            i+= 1; //Alterar o indice
-        }
+        //Não clicar em um personagem finalizar o jogo
+        window.location.href = 'fim_de_jogo.html?' + tempo + '-' + acertos ;
     }
 
-    //-90 para que o tamanho seja menor que o limite e não ultrapasse a tela
-    var posicaoX = Math.floor(Math.random() * largura) - 125;
-    var posicaoY = Math.floor(Math.random() * altura) - 125;
+    //-120 para que o tamanho seja menor que o limite e não ultrapasse a tela
+    var posicaoX = Math.floor(Math.random() * largura) - 120;
+    var posicaoY = Math.floor(Math.random() * altura) - 120;
 
     //Para corrigir erro da imagem ficar fora da tela
     posicaoX = posicaoX < 0 ? 0 : posicaoX;
     posicaoY = posicaoY < 0 ? 0 : posicaoY; 
     
-    var mosca = document.createElement('img'); //Criar elemento HTML
-    mosca.src = 'img/mosca.png'; //Manipulando o atributo do elemento
-    mosca.className = tamanhoRandom() + ' ' + ladoRandom(); //Atribuir duas classes a esse elemento vinda da função
+    var person = document.createElement('img'); //Criar elemento HTML
+    person.src = personRamdom(); //Manipulando o atributo do elemento
+    person.style.transform = escalonarRandom() + ' ' + rotacionarRandom(); //Atribuir dois estilos
 
     //Aplicar coordenadas
-    mosca.style.left = posicaoX + 'px';
-    mosca.style.top = posicaoY + 'px';
+    person.style.left = posicaoX + 'px';
+    person.style.top = posicaoY + 'px';
 
     //O elemento precisa ter posição absoluta  
-    mosca.style.position = 'absolute';
+    person.style.position = 'absolute';
 
     //Adicionanod um identificador único
-    mosca.id = 'mosca';
+    person.id = 'person';
 
     //Remover o elemento ao clicar
-    mosca.onclick = function() {
+    person.onclick = function() {
         this.remove();
+        acertos += 1;
     }
 
-    document.body.appendChild(mosca); //Adicionar na página o elemento
+    document.body.appendChild(person); //Adicionar na página o elemento
 }
 
-//Tamanhos randômicos para a mosca
-function tamanhoRandom() {
+//Personagens randômicos
+function personRamdom() {
+    //Multiplicar por 2 e fazer arredondamento para obter 0 e 1
+    var person = Math.floor(Math.random() * 2); 
+
+    //Retornar uma string com a classe
+    switch(person) {
+        case 0:
+            return 'img/person-marx.png';
+        case 1:    
+            return 'img/person-stalin.png';
+    }
+
+}
+
+//Escalonamento randômico para os personagens
+function escalonarRandom() {
     //Multiplicar por 3 e fazer arredondamento garante os tamanhos de 0, 1 e 2
-    var classe = Math.floor(Math.random() * 3); 
+    let num = Math.floor(Math.random() * 3); 
 
     //Retornar uma string com a classe
-    switch(classe) {
+    switch(num) {
         case 0:
-            return 'mosca1';
+            return 'scale(1)'; //Escala normal
         case 1:
-            return 'mosca2';
+            return 'scale(0.8)'; //Escala pequena
         case 2:
-            return 'mosca3';
+            return 'scale(2.2)'; //Escala grande
     }
 }
 
-//Para colocar a mosca de lados aleatórios aleatórias 
-function ladoRandom() {
-    //Multiplicar por 2 garante os tamanhos de 0 e 1
-    var classe = Math.floor(Math.random() * 2); 
+//Rotacionar randômico os personagens
+function rotacionarRandom() {
+    //Multiplicar por 3 garante os números 0, 1 e 2 aleatóriamente
+    let num = Math.floor(Math.random() * 3); 
 
-    //Retornar uma string com a classe
-    switch(classe) {
+    //Retornar uma string
+    switch(num) {
         case 0:
-            return 'ladoA';
+            return 'rotate(0)'; //Rotação normal
         case 1:
-            return 'ladoB';
+            return 'rotate(45deg)'; //Rotação
+        case 2:
+            return 'rotate(-45deg)'; //Rotação
 }
 }

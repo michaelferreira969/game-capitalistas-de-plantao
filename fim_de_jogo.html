@@ -9,23 +9,74 @@
     <!--Estilo-->
     <link rel="stylesheet" href="css/style.css">
 
-    <!--Favicon Mosca-->
-    <link rel="shortcut icon" href="img/mosca.png" type="image/x-icon">
+    <!--Favicon Dinheiro-->
+    <link rel="shortcut icon" href="img/dinheiro-icon.png" type="image/x-icon">
     
-    <title>Game Mata Mosquito</title>
+    <title>Game Capitalistas de Plantão</title>
 </head>
-<body>
+<body id="fim-de-jogo">
     <div id="container"><!--Inicio do container-->
 
         <div id="area-capa">
-            <img src="img/game_over.png" alt="Game Over">
-            <div id="area-btn">
-                <button class="btn" onclick="window.location.href = 'index.html'">
-                    Reiniciar
-                </button>
+            <div id="area-central">
+                <h1>Força Guerreiro!</h1>
+                <div id="area-resultados">
+                    Seu tempo total foi de <span id="tempo"></span>
+                    <br>
+                    Pontuação: <span id="pontos"></span>
+                </div>
+                <div id="area-btn">
+                    <button class="btn" onclick="window.location.href = 'jogo.html'">
+                        Jogar Novamente
+                    </button>
+                </div>
             </div>
         </div>
-
     </div><!--Fim do container-->
+
+    <script>
+        let url = null; //Variável para guardar url
+        let vetorTempoPontos = []; //Vetor que vai guardar strings
+        let tempo = 0; //variável que vai guardar o tempo em segundos
+        let pontos = 0; //Variável que vai guardar a pontuação
+
+        //Pegar itens do url
+        url = window.location.search;
+
+        //Substituir ?
+        url = url.replace('?', '');
+
+        //Substituir -
+        url = url.replace('-', ' ');
+
+        //Separar string
+        vetorTempoPontos = url.split(' ');
+    
+        //Atribuir as variaveis cada string
+        tempo = vetorTempoPontos[0];
+        pontos = vetorTempoPontos[1];
+
+        //Convertendo o tipo das variáveis
+        tempo = parseInt(tempo);
+        pontos = parseInt(pontos);
+        
+        //Se o tempo passou de 60 segundos converter para minutos
+        if(tempo >= 60) {
+            tempo = (tempo / 60);
+            
+            //Pegar 1 casa decimal
+            tempo = tempo.toFixed(2);
+
+            //Formatação de relógio
+            tempo = tempo.replace('.', ' min ');
+        }
+        
+        //Apresentar tempo entre o span 
+        document.getElementById('tempo').innerHTML = tempo + ' sec';
+
+        //Apresentar pontos entre o span 
+        document.getElementById('pontos').innerHTML = pontos;
+    </script>
+
 </body>
 </html>

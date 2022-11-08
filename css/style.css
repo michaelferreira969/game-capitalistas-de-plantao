@@ -16,10 +16,18 @@
 /*Cenário do Jogo*/
 body {
     /*Definição da imagem de fundo*/
-    background: url(../img/fundo-capital.jpg) no-repeat;
+    background: url(../img/fundo-principal.jpg) no-repeat;
     background-size: cover;
 
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+/*Cenário do jogo na index*/
+body#jogo {
+    /*Definição da imagem de fundo*/
+    background: url(../img/fundo-capital.jpg) no-repeat;
+
+    cursor: grab;
 }
 
 /*Título da página principal*/
@@ -114,11 +122,6 @@ p {
     opacity: 0.7;
 }
 
-/*Area das vidas*/
-.vidas {
-    float: left;
-}
-
 /*Area de cronometro*/
 .cronometro {
     float: left;
@@ -127,27 +130,23 @@ p {
     font-weight: bold;
 }
 
-/*Mosca grande*/
-.mosca1 {
-    width: 125px;
+body#fim-de-jogo #area-central {
+    display: block;
+    text-align: center;
 }
 
-/*Mosca média*/
-.mosca2 {
-    width: 75px;
+#area-resultados {
+    font-size: 3em;
+    color: white;
+    text-shadow: 1px 1px 4px black;
 }
 
-/*Mosca pequena*/
-.mosca3 {
-    width: 50px;
+/*Tempo no fim de jogo*/
+#tempo {
+    color: rgb(179, 11, 11);
 }
 
-/*Lado A mosca olha para esquerda*/
-.ladoA {
-    transform: scalex(1);
+#pontos {
+    color: rgb(179, 11, 11);
 }
 
-/*Lado B mosca olha para direita*/
-.ladoB {
-    transform: scalex(-1);
-}
