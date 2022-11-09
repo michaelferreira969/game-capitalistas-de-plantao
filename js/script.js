@@ -1,44 +1,11 @@
 var altura = 0;
 var largura = 0;
 let acertos = 0; //Controlar quantos conseguiu acertar
-var cont = 0;
-
-var i = 0; //Variável iterável para o indice
+var contadorPerson = 0; //Contar cada personagem
 var tempo = 0; //Variável que define o tempo
 
 //Criar personagem em cada ciclo de tempo
 var criaPerson = setInterval(function() {posicaoRandom()}, 3000);
-
-function nivel() {
-    //Definir velocidade de criação conforme a quantidade de acertos
-    if(acertos == 10) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-        
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 2000);
-    }
-    else if(acertos == 15) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-        
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1500);
-    }
-    else if(acertos == 20) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-        
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1000);    }
-    else if(acertos == 25) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-        
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 500);
-    }
-}
 
 //Para que mostre o tempo logo quando começar a contar
 document.getElementById('cronometro').innerHTML = tempo;
@@ -49,87 +16,47 @@ function ajustaTamanhoCenario() {
     largura = window.innerWidth; //Definir largura da página
 }
 
-ajustaTamanhoCenario() //chamar a função
+ajustaTamanhoCenario(); //chamar a função
+
+//Função que determina novos nascimentos de acordo com a pontuação
+onclick = function () {
+    console.log(acertos);
+    //Criar personagem se os acertos forem os determinados
+    if(acertos == 5) {
+        //Iniciar criação com novo tempo
+        clearInterval(criaPerson);
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2600);
+    }
+    else if(acertos == 10) {
+        //Iniciar criação com novo tempo
+        clearInterval(criaPerson);
+        var criaPerson = setInterval(function() {posicaoRandom()}, 2400);
+    }
+    else if(acertos == 20) {
+        //Iniciar criação com novo tempo
+        clearInterval(criaPerson);
+        var criaPerson = setInterval(function() {posicaoRandom()}, 3000);
+    }
+    else if(acertos == 30) {
+        clearInterval(criaPerson);
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1400);
+    }
+    else if(acertos == 40) {
+        clearInterval(criaPerson);
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 1000);
+    }
+    else if(acertos == 50) {
+        clearInterval(criaPerson);
+        //Iniciar criação com novo tempo
+        var criaPerson = setInterval(function() {posicaoRandom()}, 600);
+    }
+}
 
 //Controlar o tempo
 var cronometro = setInterval(function() {
     tempo += 1; //Para somar o tempo conforme corre o cronometro
-
-    //Para alterar a velocidade conforme avança o tempo
-    if(tempo == 10) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 20) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 30) {
-        //Interromper a criação
-        clearInterval(criaPerson);   
-    }
-    else if(tempo == 40) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 50) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 60) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 70) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 80) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-    else if(tempo == 90) {
-        //Interromper a criação
-        clearInterval(criaPerson);
-    }
-
-    //Criar person em determinado tempo
-    if(tempo == 12) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 2500);
-    }
-    else if(tempo == 22) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 2300);
-    }
-    else if(tempo == 32) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 2000);
-    }
-    else if(tempo == 42) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1700);
-    }
-    else if(tempo == 52) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1500);
-    }
-    else if(tempo == 62) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1300);
-    }
-    else if(tempo == 72) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 1000);
-    }
-    else if(tempo == 82) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 700);
-    }
-    else if(tempo == 92) {
-        //Iniciar criação com novo tempo
-        var criaPerson = setInterval(function() {posicaoRandom()}, 500);
-    }
 
     document.getElementById('cronometro').innerHTML = tempo; //Colocar o cronometro entre às tags
 
@@ -138,13 +65,15 @@ var cronometro = setInterval(function() {
 
 //Criar posições randômicas
 function posicaoRandom() {
+    //Se encontrar um personagem na tela então somar contador
+    if (document.getElementById('person')) {
+        contadorPerson++;
+    }
 
-    //Para que não apareça mais de um personagem simultaneamente 
-    if (document.getElementById('person')) { //Se encontrar um personagem é verdadeiro
-        document.getElementById('person').remove(); //Remover o personagem 
-
-        //Não clicar em um personagem finalizar o jogo
-        window.location.href = 'fim_de_jogo.html?' + tempo + '-' + acertos ;
+    //Se juntar mais de três personagens na tela perde 
+    if (contadorPerson >= 3) {
+        //Finalizar o jogo
+        window.location.href = 'fim-de-jogo.html?' + tempo + '-' + acertos;
     }
 
     //-120 para que o tamanho seja menor que o limite e não ultrapasse a tela
@@ -172,7 +101,12 @@ function posicaoRandom() {
     //Remover o elemento ao clicar
     person.onclick = function() {
         this.remove();
-        acertos += 1;
+        acertos += 1; //Aumentar pontos
+ 
+        //Decrementar somente quando tiver mais de um personagem
+        if(contadorPerson > 0) {
+            contadorPerson--; //Quando clicado então contador diminui
+        }
     }
 
     document.body.appendChild(person); //Adicionar na página o elemento
