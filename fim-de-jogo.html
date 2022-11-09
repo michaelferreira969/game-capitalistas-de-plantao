@@ -17,21 +17,28 @@
 <body id="fim-de-jogo">
     <div id="container"><!--Inicio do container-->
 
-        <div id="area-capa">
-            <div id="area-central">
-                <h1>Força Guerreiro!</h1>
-                <div id="area-resultados">
-                    Seu tempo total foi de <span id="tempo"></span>
-                    <br>
-                    Pontuação: <span id="pontos"></span>
-                </div>
-                <div id="area-btn">
-                    <button class="btn" onclick="window.location.href = 'jogo.html'">
-                        Jogar Novamente
-                    </button>
-                </div>
+        <div id="area-central">
+            <img id="imagem" src="" width="200px" alt="">
+            <h1 id="h1"></h1>
+            <div id="area-resultados">
+                Seu tempo foi <span id="tempo"></span>
+                <br>
+                Total de pontos: <span id="pontos"></span>
+            </div>
+            <div id="area-btn">
+                <button class="btn" onclick="window.location.href = 'jogo.html'">
+                    Jogar Novamente
+                </button>
             </div>
         </div>
+        <div id="autor">
+            Desenvolvido por:
+            <a href="https://linkedin.com/in/michaelferreira969/">Michael Ferreira</a> |
+            <a href="https://linkedin.com/in/">Victor Barbosa</a> |
+            <a href="https://linkedin.com/in/">Walax Santos</a>
+        </div>
+
+
     </div><!--Fim do container-->
 
     <script>
@@ -70,9 +77,49 @@
             //Formatação de relógio
             tempo = tempo.replace('.', ' min ');
         }
+
+        //Pegar o elemento html de imagem
+        let imagem = document.getElementById('imagem');
+
+        //APresentar mensagens dependendo da pontuação
+        if(pontos < 10) {
+            //Apresentar entre o h1 
+            document.getElementById('h1').innerHTML = 'Tá aprendendo, né?';   
+            
+            //Mudar imagem
+            imagem.src = 'img/karl-marx.png';
+        }
+        else if(pontos >= 10 && pontos < 20) {
+            //Apresentar entre o h1 
+            document.getElementById('h1').innerHTML = 'Ufa! Melhorou!';       
+            
+            //Mudar imagem
+            imagem.src = 'img/galo-cego.png';
+        }
+        else if(pontos >= 20 && pontos < 30) {
+            //Apresentar entre o h1 
+            document.getElementById('h1').innerHTML = 'Mandou muito bem!';  
+            
+            //Mudar imagem
+            imagem.src = 'img/snoop-dogg.gif';
+        }
+        else if(pontos >= 30 && pontos < 40) {
+            //Apresentar entre o h1 
+            document.getElementById('h1').innerHTML = 'Excepcional!';    
+            
+            //Mudar imagem
+            imagem.src = 'img/like-a-boss.png';
+        }
+        else if(pontos >= 40) {
+            //Apresentar entre o h1 
+            document.getElementById('h1').innerHTML = 'Chuck Norris?';
+            
+            //Mudar imagem
+            imagem.src = 'img/chuck-norris.png';
+        }
         
         //Apresentar tempo entre o span 
-        document.getElementById('tempo').innerHTML = tempo + ' sec';
+        document.getElementById('tempo').innerHTML = tempo + ' s';
 
         //Apresentar pontos entre o span 
         document.getElementById('pontos').innerHTML = pontos;
