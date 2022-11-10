@@ -16,21 +16,18 @@
 /*Cenário do Jogo*/
 body {
     /*Definição da imagem de fundo*/
-    background: linear-gradient(20deg, rgb(134, 15, 15), rgb(14, 95, 14));
+    background: url(../img/fundo-capa.png), url(../img/fundo.jpg);
     background-size: cover;
 
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
 
-/*Cenário do jogo na index*/
+/*Mudar o ponteiro do mouse*/
 body#jogo {
-    /*Definição da imagem de fundo*/
-    background: url(../img/fundo-capital.jpg) no-repeat;
-
     cursor: grab;
 }
 
-/*Título da página principal*/
+/*Título da página*/
 h1 {
     color: rgb(255, 255, 255);
     font-size: 4em;
@@ -52,36 +49,37 @@ h1 {
 
 /*Layout da área central da página principal*/
 #area-central {
-    width: 80%;
+    width: 70%;
 
     padding: 10px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
 }
 
+/*Título game da página principal*/
 #game {
     width: 100%;    
     font-size: 3em;
     font-family: 'Times New Roman', Times, serif;
-    color: rgb(214, 32, 32);
+    color: white;
 
     text-shadow: 1px 1px 3px black;
     text-transform: uppercase;
     text-align: center;
 }
 
+/*Area de parágrafos de texto da página principal*/
 #paragrafos {
     margin: 20px 0;
     text-align: center;
 }
 
+/*Parágrafos de texto da página principal*/
 p {
-    color: rgb(0, 0, 0);
-    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.4);
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     font-size: 1.2em;
+    font-weight: 600;
     letter-spacing: 1px;
 }
 
@@ -96,9 +94,9 @@ p {
 
 /*Formatar Botão*/
 #area-btn button {
-    background-color: rgb(201, 204, 2);
-    border: 1px solid rgb(201, 204, 2);
-    color: black;
+    background-color: #0A3B0A;
+    border: 1px solid #0A3B0A;
+    color: white;
     border-radius: 10px;
     border: none;
 
@@ -115,33 +113,38 @@ p {
     animation: animarBtn 1s ease-in-out infinite alternate-reverse;
 }
 
+/*Efeito de Botões*/
 #area-btn button:hover {
-    color: rgb(201, 204, 2);
+    color: white;
     background-color: rgba(255, 255, 255, 0);
-    border: 1px solid rgb(201, 204, 2);
-    transition: all 0.7s;
+    border: 2px solid #0A3B0A;
+    transition: background-color 0.7s ease-in-out;
 }
 
+/*Area com os autores*/
 #autor {
     position: absolute;
     bottom: 0px;
 
     color: white;
     font-size: 1em;
+    font-weight: bold;
 
     letter-spacing: 1px;
 }
 
+/*Links dos autores*/
 #autor a:link, #autor a:visited {
     text-decoration: none;
-    color: rgb(226, 222, 0);
+    text-shadow: 1px 1px 5px black;
+    color: white;
 }
 
 #autor a:hover {
     text-decoration: underline;
 }
 
-/*Painel inferior de informações*/
+/*Painel inferior de informações da página de jogo*/
 .painel {
     position: absolute;
     bottom: 0px;
@@ -150,13 +153,13 @@ p {
     width: 110px;
     padding: 10px;
 
-    color: rgb(214, 32, 32);
+    color: rgb(201, 5, 5);
 
     border-top: 1px solid white;
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-/*Area de cronometro*/
+/*Cronometro do jogo*/
 .cronometro {
     float: left;
 
@@ -164,24 +167,195 @@ p {
     font-weight: bold;
 }
 
-body#fim-de-jogo #area-central {
-    display: block;
-    text-align: center;
+/*Imagem de fim de jogo*/
+img#imagem {
+    width: 200px; 
+    height: 240px;
 }
 
+/*Area com imagem e h1*/
+#area-titulo {
+    width: 100%;
+}
+
+/*Area com os resultados do fim de jogo*/
 #area-resultados {
-    font-size: 3em;
-    color: white;
+    font-size: 2em;
     text-shadow: 1px 1px 4px black;
+    color: white;
+    
+    display: flex;
+    justify-content: center;
+    
+    margin: 30px 0;
 }
 
-/*Tempo no fim de jogo*/
-#tempo {
-    color: rgb(214, 32, 32);
+/*Bloco de resultados*/
+.bloco {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+
 }
 
-#pontos {
-    color: rgb(214, 32, 32);
+#tempo, #pontos {
+    color: rgb(201, 5, 5);
+
+    padding: 2px 10px;
+    margin: 0 10px;
+}
+
+@media (max-width: 575.98px) {
+    /*Título da página*/
+    h1 {
+        font-size: 1.5em;
+    }
+
+    /*Layout da area de botões*/
+    #area-btn {
+        margin-bottom: 60px;
+    }
+
+    #area-btn button {
+        font-size: 0.6em;
+    }
+
+    /*Imagem de fim de jogo*/
+    img#imagem {
+        width: 200px; 
+        height: 200px;
+    }
+
+    /*Area com os resultados do fim de jogo*/
+    #area-resultados {
+        font-size: 1.2em;
+        margin: 60px 10px;
+    }
+
+    /*Bloco de resultados*/
+    .bloco {
+        width: 100%;
+    }
+
+    /*Area com os autores*/
+    #autor {
+        font-size: 0.7em;
+    }
+
+    .ocultar {
+        display: none;
+    }
+
+    /*Painel inferior de informações da página de jogo*/
+    .painel {
+        width: 60px;
+    }
+
+    /*Cronometro do jogo*/
+    .cronometro {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    /*Título da página*/
+    h1 {
+        font-size: 2em;
+    }
+
+    #area-btn button {
+        font-size: 0.6em;
+    }
+
+    /*Imagem de fim de jogo*/
+    img#imagem {
+        width: 200px; 
+        height: 200px;
+    }
+
+    /*Area com os resultados do fim de jogo*/
+    #area-resultados {
+        font-size: 1.2em;
+        margin: 10px;
+    }
+
+    /*Bloco de resultados*/
+    .bloco {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /*Título da página*/
+    h1 {
+        font-size: 3em;
+    }
+
+    /*Layout da area de botões*/
+    #area-btn {
+        margin-top: 40px;
+    }
+
+    #area-btn button {
+        font-size: 0.6em;
+    }
+
+    /*Imagem de fim de jogo*/
+    img#imagem {
+        width: 200px; 
+        height: 200px;
+    }
+
+    /*Area com os resultados do fim de jogo*/
+    #area-resultados {
+        font-size: 1.8em;
+        margin: 15px;
+    }
+
+    /*Bloco de resultados*/
+    .bloco {
+        width: 70%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /*Título da página*/
+    h1 {
+        font-size: 2.8em;
+    }
+
+    #area-btn button {
+        font-size: 0.8em;
+    }
+
+    /*Imagem de fim de jogo*/
+    img#imagem {
+        width: 200px; 
+        height: 200px;
+    }
+
+    /*Area com os resultados do fim de jogo*/
+    #area-resultados {
+        margin: 5px;
+    }
+
+    /*Bloco de resultados*/
+    .bloco {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    /*Area com os resultados do fim de jogo*/
+    #area-resultados {
+        font-size: 3em;
+    }
+
+    /*Bloco de resultados*/
+    .bloco {
+        width: 70%;
+    }
+
 }
 
 

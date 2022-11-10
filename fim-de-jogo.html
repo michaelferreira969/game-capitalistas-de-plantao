@@ -18,12 +18,15 @@
     <div id="container"><!--Inicio do container-->
 
         <div id="area-central">
-            <img id="imagem" src="" width="200px" alt="">
-            <h1 id="h1"></h1>
+            <div id="area-titulo">
+                <img id="imagem" src="" alt="">
+                <h1 id="h1"></h1>
+            </div>
             <div id="area-resultados">
-                Seu tempo foi <span id="tempo"></span>
-                <br>
-                Total de pontos: <span id="pontos"></span>
+                <div class="bloco">
+                    <span id="tempo"></span>
+                    <span id="pontos"></span>
+                </div>
             </div>
             <div id="area-btn">
                 <button class="btn" onclick="window.location.href = 'jogo.html'">
@@ -32,98 +35,15 @@
             </div>
         </div>
         <div id="autor">
-            Desenvolvido por:
-            <a href="https://linkedin.com/in/michaelferreira969/">Michael Ferreira</a> |
-            <a href="https://linkedin.com/in/">Victor Barbosa</a> |
-            <a href="https://linkedin.com/in/">Walax Santos</a>
+            <span class="ocultar">Desenvolvido por:</span>
+            <a href="https://linkedin.com/in/michaelferreira969/" target="_blank">Michael Ferreira</a> |
+            <a href="https://linkedin.com/in/victor-silva-a257b6221/" target="_blank">Victor Barbosa</a> |
+            <a href="https://linkedin.com/in/walax-santos-01930713b/" target="_blank">Walax Santos</a>
         </div>
 
 
     </div><!--Fim do container-->
 
-    <script>
-        let url = null; //Variável para guardar url
-        let vetorTempoPontos = []; //Vetor que vai guardar strings
-        let tempo = 0; //variável que vai guardar o tempo em segundos
-        let pontos = 0; //Variável que vai guardar a pontuação
-
-        //Pegar itens do url
-        url = window.location.search;
-
-        //Substituir ?
-        url = url.replace('?', '');
-
-        //Substituir -
-        url = url.replace('-', ' ');
-
-        //Separar string
-        vetorTempoPontos = url.split(' ');
-    
-        //Atribuir as variaveis cada string
-        tempo = vetorTempoPontos[0];
-        pontos = vetorTempoPontos[1];
-
-        //Convertendo o tipo das variáveis
-        tempo = parseInt(tempo);
-        pontos = parseInt(pontos);
-        
-        //Se o tempo passou de 60 segundos converter para minutos
-        if(tempo >= 60) {
-            tempo = (tempo / 60);
-            
-            //Pegar 1 casa decimal
-            tempo = tempo.toFixed(2);
-
-            //Formatação de relógio
-            tempo = tempo.replace('.', ' min ');
-        }
-
-        //Pegar o elemento html de imagem
-        let imagem = document.getElementById('imagem');
-
-        //APresentar mensagens dependendo da pontuação
-        if(pontos < 10) {
-            //Apresentar entre o h1 
-            document.getElementById('h1').innerHTML = 'Tá aprendendo, né?';   
-            
-            //Mudar imagem
-            imagem.src = 'img/karl-marx.png';
-        }
-        else if(pontos >= 10 && pontos < 20) {
-            //Apresentar entre o h1 
-            document.getElementById('h1').innerHTML = 'Ufa! Melhorou!';       
-            
-            //Mudar imagem
-            imagem.src = 'img/galo-cego.png';
-        }
-        else if(pontos >= 20 && pontos < 30) {
-            //Apresentar entre o h1 
-            document.getElementById('h1').innerHTML = 'Mandou muito bem!';  
-            
-            //Mudar imagem
-            imagem.src = 'img/snoop-dogg.gif';
-        }
-        else if(pontos >= 30 && pontos < 40) {
-            //Apresentar entre o h1 
-            document.getElementById('h1').innerHTML = 'Excepcional!';    
-            
-            //Mudar imagem
-            imagem.src = 'img/like-a-boss.png';
-        }
-        else if(pontos >= 40) {
-            //Apresentar entre o h1 
-            document.getElementById('h1').innerHTML = 'Chuck Norris?';
-            
-            //Mudar imagem
-            imagem.src = 'img/chuck-norris.png';
-        }
-        
-        //Apresentar tempo entre o span 
-        document.getElementById('tempo').innerHTML = tempo + ' s';
-
-        //Apresentar pontos entre o span 
-        document.getElementById('pontos').innerHTML = pontos;
-    </script>
-
+    <script src="js/script-fim-de-jogo.js"></script>
 </body>
 </html>
