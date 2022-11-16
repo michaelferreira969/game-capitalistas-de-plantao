@@ -8,6 +8,18 @@
     }
 }
 
+/*Fonte principal*/
+@font-face {
+    font-family: "OCR A Extended";
+    src: url(../fonts/ocr-a-extended.ttf);
+}
+
+/*Fonte secundária*/
+@font-face {
+    font-family: "Century Gothic";
+    src: url(../fonts/century-gothic.ttf);
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -17,9 +29,10 @@
 body {
     /*Definição da imagem de fundo*/
     background: url(../img/fundo-capa.png), url(../img/fundo.jpg);
-    background-size: cover;
+    background-size: cover; 
 
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-family: "Century Gothic", Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 /*Mudar o ponteiro do mouse*/
@@ -29,9 +42,10 @@ body#jogo {
 
 /*Título da página*/
 h1 {
-    color: rgb(255, 255, 255);
-    font-size: 4em;
-    text-shadow: 1px 1px 3px black;
+    color: white;
+    font-family: "OCR A Extended", Arial, Helvetica, sans-serif;
+    font-size: 4.2em;
+    text-shadow: 3px 3px 1px #00FFFF;
     text-align: center;
     text-transform: uppercase;
 }
@@ -59,10 +73,9 @@ h1 {
 /*Título game da página principal*/
 #game {
     width: 100%;    
-    font-size: 3em;
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-
+    
+    color: #00FFFF;
+    font-size: 2.7em;
     text-shadow: 1px 1px 3px black;
     text-transform: uppercase;
     text-align: center;
@@ -76,11 +89,9 @@ h1 {
 
 /*Parágrafos de texto da página principal*/
 p {
-    color: white;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     font-size: 1.2em;
-    font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 /*Layout da area de botões*/
@@ -94,9 +105,9 @@ p {
 
 /*Formatar Botão*/
 #area-btn button {
-    background-color: #0A3B0A;
-    border: 1px solid #0A3B0A;
-    color: white;
+    background-color: #00FFFF;
+    border: 1px solid #00FFFF;
+    color: black;
     border-radius: 10px;
     border: none;
 
@@ -117,7 +128,7 @@ p {
 #area-btn button:hover {
     color: white;
     background-color: rgba(255, 255, 255, 0);
-    border: 2px solid #0A3B0A;
+    border: 2px solid #00FFFF;
     transition: background-color 0.7s ease-in-out;
 }
 
@@ -126,9 +137,7 @@ p {
     position: absolute;
     bottom: 0px;
 
-    color: white;
     font-size: 1em;
-    font-weight: bold;
 
     letter-spacing: 1px;
 }
@@ -153,10 +162,10 @@ p {
     width: 110px;
     padding: 10px;
 
-    color: rgb(201, 5, 5);
+    color: black;
 
-    border-top: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.6);
+    border-top-right-radius: 20px;
+    background-color: rgba(0, 255, 255, 0.4);
 }
 
 /*Cronometro do jogo*/
@@ -182,20 +191,17 @@ img#imagem {
 #area-resultados {
     font-size: 2em;
     text-shadow: 1px 1px 4px black;
-    color: white;
     
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     
     margin: 30px 0;
 }
 
 /*Bloco de resultados*/
 .bloco {
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-
+    width: 100%;
 }
 
 #tempo, #pontos {
@@ -208,7 +214,21 @@ img#imagem {
 @media (max-width: 575.98px) {
     /*Título da página*/
     h1 {
-        font-size: 1.5em;
+        font-size: 2em;
+    }
+
+    /*Layout da área central da página principal*/
+    #area-central {
+        width: 90%;
+    }
+
+    /*Título game da página principal*/
+    #game {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.8em;
     }
 
     /*Layout da area de botões*/
@@ -229,12 +249,11 @@ img#imagem {
     /*Area com os resultados do fim de jogo*/
     #area-resultados {
         font-size: 1.2em;
-        margin: 60px 10px;
+        margin: 60px 0px;
     }
 
-    /*Bloco de resultados*/
-    .bloco {
-        width: 100%;
+    #tempo, #pontos {
+        margin: 0 60px;
     }
 
     /*Area com os autores*/
@@ -244,11 +263,12 @@ img#imagem {
 
     .ocultar {
         display: none;
+        visibility: hidden;
     }
 
     /*Painel inferior de informações da página de jogo*/
     .painel {
-        width: 60px;
+        width: 70px;
     }
 
     /*Cronometro do jogo*/
@@ -261,6 +281,11 @@ img#imagem {
     /*Título da página*/
     h1 {
         font-size: 2em;
+    }
+
+    /*Título game da página principal*/
+    #game {
+        font-size: 1.5em;
     }
 
     #area-btn button {
@@ -278,17 +303,22 @@ img#imagem {
         font-size: 1.2em;
         margin: 10px;
     }
-
-    /*Bloco de resultados*/
-    .bloco {
-        width: 80%;
-    }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     /*Título da página*/
     h1 {
-        font-size: 3em;
+        font-size: 3.3em;
+    }
+
+    /*Layout da área central da página principal*/
+    #area-central {
+        width: 80%;
+    }
+
+    /*Título game da página principal*/
+    #game {
+        font-size: 2em;
     }
 
     /*Layout da area de botões*/
@@ -311,17 +341,17 @@ img#imagem {
         font-size: 1.8em;
         margin: 15px;
     }
-
-    /*Bloco de resultados*/
-    .bloco {
-        width: 70%;
-    }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
     /*Título da página*/
     h1 {
         font-size: 2.8em;
+    }
+
+    /*Título game da página principal*/
+    #game {
+        font-size: 2.2em;
     }
 
     #area-btn button {
@@ -338,22 +368,17 @@ img#imagem {
     #area-resultados {
         margin: 5px;
     }
-
-    /*Bloco de resultados*/
-    .bloco {
-        width: 60%;
-    }
 }
 
 @media (min-width: 1200px) {
     /*Area com os resultados do fim de jogo*/
     #area-resultados {
-        font-size: 3em;
+        font-size: 2.4em;
     }
 
-    /*Bloco de resultados*/
-    .bloco {
-        width: 70%;
+    /*Painel inferior de informações da página de jogo*/
+    .painel {
+        width: 130px;
     }
 
 }
